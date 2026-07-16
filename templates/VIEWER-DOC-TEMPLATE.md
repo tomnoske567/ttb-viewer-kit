@@ -62,7 +62,7 @@
 ### 2. {Archetype name}
 {Description}
 
-> "{Verbatim quote}"
+> "{Verbatim quote}" — {first name or "viewer comment"}
 
 ---
 

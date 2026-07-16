@@ -7,11 +7,18 @@
 <!--
   TEMPLATE INSTRUCTIONS FOR CLAUDE:
   - Replace every {{PLACEHOLDER}} with the user's real content from MY-VIEWER.md.
-  - Duplicate elements marked "duplicate as needed" to match the user's content count
-    (2-4 archetypes, 4 stat tiles, 5-10 pain points, etc.). Delete unused ones.
+  - Duplicate elements marked "duplicate as needed" to match the document exactly.
+    Never invent rows to hit a count. Delete unused placeholder blocks.
   - Do NOT redesign: keep the CSS, structure, and class names exactly as they are.
-  - Quotes must stay verbatim from the document. Sections marked TO VALIDATE in the
-    document are omitted here — the dashboard shows only evidenced findings.
+  - Never type your own quote marks — every slot that wants them already provides
+    them (pre-wrapped curly quotes or CSS). Insert bare text into every placeholder.
+  - Quotes stay verbatim from the document. A pain-point quote may keep its
+    attribution by appending it inside the slot after an em dash.
+  - Anything marked TO VALIDATE in the document — whole sections or single list
+    items — is omitted here. The dashboard shows only evidenced findings.
+  - {{DATE}} is the document's most recent changelog date, not today.
+  - The "Words they actually use" chips pull from all vocabulary lists in the
+    document (resonant phrases + emotional + aspiration).
 -->
 <style>
   :root {
