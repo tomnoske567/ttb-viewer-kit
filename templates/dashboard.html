@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{BRAND_NAME}} — Ideal Viewer</title>
+<!--
+  TEMPLATE INSTRUCTIONS FOR CLAUDE:
+  - Replace every {{PLACEHOLDER}} with the user's real content from MY-VIEWER.md.
+  - Duplicate elements marked "duplicate as needed" to match the user's content count
+    (2-4 archetypes, 4 stat tiles, 5-10 pain points, etc.). Delete unused ones.
+  - Do NOT redesign: keep the CSS, structure, and class names exactly as they are.
+  - Quotes must stay verbatim from the document. Sections marked TO VALIDATE in the
+    document are omitted here — the dashboard shows only evidenced findings.
+-->
+<style>
+  :root {
+    --bg: #faf9f7;
+    --surface: #ffffff;
+    --ink: #1a1a1a;
+    --ink-2: #52525b;
+    --ink-3: #8e8e93;
+    --line: #e6e4df;
+    --accent: #0e7c66;
+    --accent-soft: #0e7c6614;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #131312;
+      --surface: #1c1c1b;
+      --ink: #f2f1ee;
+      --ink-2: #b3b1ac;
+      --ink-3: #7c7a75;
+      --line: #2c2b29;
+      --accent: #34b895;
+      --accent-soft: #34b8951f;
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    padding: 48px 20px 80px;
+  }
+  .page { max-width: 980px; margin: 0 auto; }
+
+  /* Header */
+  .kicker {
+    font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--accent); font-weight: 700; margin-bottom: 10px;
+  }
+  h1 { font-size: clamp(28px, 5vw, 44px); line-height: 1.1; letter-spacing: -0.02em; font-weight: 800; }
+  .subtitle { margin-top: 12px; font-size: 16px; color: var(--ink-2); max-width: 64ch; }
+  .meta { margin-top: 14px; font-size: 13px; color: var(--ink-3); }
+
+  section { margin-top: 56px; }
+  h2 {
+    font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink-3); font-weight: 700; margin-bottom: 18px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  h2::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+
+  .card {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 14px; padding: 24px;
+  }
+
+  /* Hero: your one viewer */
+  .hero { border-left: 4px solid var(--accent); padding: 28px; }
+  .hero .name { font-size: 24px; font-weight: 800; letter-spacing: -0.01em; }
+  .hero .who { margin-top: 8px; color: var(--ink-2); max-width: 70ch; }
+  blockquote {
+    margin-top: 16px; padding: 14px 18px; background: var(--accent-soft);
+    border-radius: 10px; font-size: 17px; font-style: italic; color: var(--ink);
+  }
+  blockquote .attr { display: block; margin-top: 6px; font-size: 12.5px; font-style: normal; color: var(--ink-3); }
+  .hero .note { margin-top: 14px; font-size: 14px; font-weight: 600; color: var(--accent); }
+
+  /* Stat tiles */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+  .tile { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; }
+  .tile .label { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); font-weight: 600; }
+  .tile .value { margin-top: 6px; font-size: 21px; font-weight: 800; letter-spacing: -0.01em; }
+  .tile .detail { margin-top: 4px; font-size: 13px; color: var(--ink-2); }
+
+  /* Archetypes */
+  .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; }
+  .arch .num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 26px; height: 26px; border-radius: 50%;
+    background: var(--accent); color: #fff; font-size: 13px; font-weight: 700; margin-bottom: 12px;
+  }
+  .arch h3 { font-size: 18px; font-weight: 750; letter-spacing: -0.01em; }
+  .arch p { margin-top: 6px; font-size: 14.5px; color: var(--ink-2); }
+  .arch blockquote { font-size: 14.5px; }
+
+  /* Pain points — ranked list */
+  .pains { display: flex; flex-direction: column; gap: 10px; }
+  .pain { display: flex; gap: 16px; align-items: baseline; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 20px; }
+  .pain .rank { font-size: 22px; font-weight: 800; color: var(--accent); min-width: 34px; font-variant-numeric: tabular-nums; }
+  .pain .body h3 { font-size: 16px; font-weight: 700; }
+  .pain .body p { font-size: 14px; color: var(--ink-2); margin-top: 2px; }
+  .pain .body .pq { font-size: 13.5px; font-style: italic; color: var(--ink-3); margin-top: 6px; }
+
+  /* Language bank chips */
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 999px;
+    padding: 7px 14px; font-size: 14px; color: var(--ink);
+  }
+  .lang-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+  .lang-cols h3 { font-size: 14px; font-weight: 700; margin-bottom: 12px; color: var(--ink-2); }
+  .thats-me { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .thats-me li {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+    padding: 10px 14px; font-size: 14.5px; font-style: italic;
+  }
+  .thats-me li::before { content: "“"; color: var(--accent); font-weight: 800; margin-right: 2px; }
+
+  /* Want / fear columns */
+  .wf { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; }
+  .wf .card h3 { font-size: 15px; font-weight: 750; margin-bottom: 12px; }
+  .wf ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .wf li { font-size: 14.5px; color: var(--ink-2); padding-left: 18px; position: relative; }
+  .wf li::before { content: ""; position: absolute; left: 0; top: 9px; width: 7px; height: 7px; border-radius: 2px; background: var(--accent); }
+  .wf li em { color: var(--ink); font-style: italic; }
+
+  /* Objections */
+  .obj-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 14.5px; }
+  .obj-row:last-child { border-bottom: none; }
+  .obj-row .o { font-style: italic; }
+  .obj-row .r { color: var(--ink-2); }
+  .obj-head { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); font-weight: 600; font-style: normal !important; }
+  @media (max-width: 560px) { .obj-row { grid-template-columns: 1fr; gap: 4px; } .obj-head.r-head { display: none; } }
+
+  /* Angles */
+  .angles { list-style: none; display: flex; flex-direction: column; gap: 10px; counter-reset: angle; }
+  .angles li { font-size: 15px; padding-left: 34px; position: relative; counter-increment: angle; }
+  .angles li::before {
+    content: counter(angle, decimal-leading-zero); position: absolute; left: 0; top: 1px;
+    font-size: 13px; font-weight: 800; color: var(--accent); font-variant-numeric: tabular-nums;
+  }
+
+  footer { margin-top: 72px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 13px; color: var(--ink-3); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  footer a { color: var(--accent); text-decoration: none; font-weight: 600; }
+
+  @media print {
+    body { padding: 0; background: #fff; }
+    .card, .tile, .pain { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="kicker">Ideal Viewer Document</div>
+    <h1>{{BRAND_NAME}}</h1>
+    <p class="subtitle">{{ONE_SENTENCE_PORTRAIT}}</p>
+    <p class="meta">Built from {{SOURCES_SUMMARY}} · Last updated {{DATE}}</p>
+  </header>
+
+  <section>
+    <h2>Your One Viewer</h2>
+    <div class="card hero">
+      <div class="name">{{ONE_VIEWER_NAME}}</div>
+      <p class="who">{{ONE_VIEWER_DESCRIPTION}}</p>
+      <blockquote>{{ONE_VIEWER_QUOTE}}<span class="attr">— {{ONE_VIEWER_NAME}}</span></blockquote>
+      <p class="note">When you make content, you are talking to {{ONE_VIEWER_NAME}}.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Who They Are</h2>
+    <div class="tiles">
+      <!-- duplicate as needed: pick the 4 strongest evidenced facts (age, platform, income, background, etc.) -->
+      <div class="tile">
+        <div class="label">{{STAT_1_LABEL}}</div>
+        <div class="value">{{STAT_1_VALUE}}</div>
+        <div class="detail">{{STAT_1_DETAIL}}</div>
+      </div>
+      <div class="tile">
+        <div class="label">{{STAT_2_LABEL}}</div>
+        <div class="value">{{STAT_2_VALUE}}</div>
+        <div class="detail">{{STAT_2_DETAIL}}</div>
+      </div>
+      <div class="tile">
+        <div class="label">{{STAT_3_LABEL}}</div>
+        <div class="value">{{STAT_3_VALUE}}</div>
+        <div class="detail">{{STAT_3_DETAIL}}</div>
+      </div>
+      <div class="tile">
+        <div class="label">{{STAT_4_LABEL}}</div>
+        <div class="value">{{STAT_4_VALUE}}</div>
+        <div class="detail">{{STAT_4_DETAIL}}</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>The Archetypes</h2>
+    <div class="grid-2">
+      <!-- duplicate as needed: one card per archetype (2-4) -->
+      <div class="card arch">
+        <span class="num">1</span>
+        <h3>{{ARCHETYPE_1_NAME}}</h3>
+        <p>{{ARCHETYPE_1_DESCRIPTION}}</p>
+        <blockquote>{{ARCHETYPE_1_QUOTE}}<span class="attr">— {{ARCHETYPE_1_ATTRIBUTION}}</span></blockquote>
+      </div>
+      <div class="card arch">
+        <span class="num">2</span>
+        <h3>{{ARCHETYPE_2_NAME}}</h3>
+        <p>{{ARCHETYPE_2_DESCRIPTION}}</p>
+        <blockquote>{{ARCHETYPE_2_QUOTE}}<span class="attr">— {{ARCHETYPE_2_ATTRIBUTION}}</span></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Core Pain Points — Ranked by Frequency</h2>
+    <div class="pains">
+      <!-- duplicate as needed: one row per pain point, in the document's ranked order -->
+      <div class="pain">
+        <div class="rank">01</div>
+        <div class="body">
+          <h3>{{PAIN_1_NAME}}</h3>
+          <p>{{PAIN_1_DESCRIPTION}}</p>
+          <p class="pq">“{{PAIN_1_QUOTE}}”</p>
+        </div>
+      </div>
+      <div class="pain">
+        <div class="rank">02</div>
+        <div class="body">
+          <h3>{{PAIN_2_NAME}}</h3>
+          <p>{{PAIN_2_DESCRIPTION}}</p>
+          <p class="pq">“{{PAIN_2_QUOTE}}”</p>
+        </div>
+      </div>
+      <div class="pain">
+        <div class="rank">03</div>
+        <div class="body">
+          <h3>{{PAIN_3_NAME}}</h3>
+          <p>{{PAIN_3_DESCRIPTION}}</p>
+          <p class="pq">“{{PAIN_3_QUOTE}}”</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>The Language Bank</h2>
+    <div class="lang-cols">
+      <div>
+        <h3>Lines they'd see and think “that's me”</h3>
+        <ul class="thats-me">
+          <!-- duplicate as needed -->
+          <li>{{THATS_ME_LINE_1}}</li>
+          <li>{{THATS_ME_LINE_2}}</li>
+          <li>{{THATS_ME_LINE_3}}</li>
+          <li>{{THATS_ME_LINE_4}}</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Words they actually use</h3>
+        <div class="chips">
+          <!-- duplicate as needed: emotional + aspiration vocabulary -->
+          <span class="chip">{{WORD_1}}</span>
+          <span class="chip">{{WORD_2}}</span>
+          <span class="chip">{{WORD_3}}</span>
+          <span class="chip">{{WORD_4}}</span>
+          <span class="chip">{{WORD_5}}</span>
+          <span class="chip">{{WORD_6}}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>What They Want vs What They Fear</h2>
+    <div class="wf">
+      <div class="card">
+        <h3>They want</h3>
+        <ul>
+          <!-- duplicate as needed: desire + their words in <em> -->
+          <li>{{WANT_1}} — <em>“{{WANT_1_WORDS}}”</em></li>
+          <li>{{WANT_2}} — <em>“{{WANT_2_WORDS}}”</em></li>
+          <li>{{WANT_3}} — <em>“{{WANT_3_WORDS}}”</em></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>They fear</h3>
+        <ul>
+          <li>{{FEAR_1}}</li>
+          <li>{{FEAR_2}}</li>
+          <li>{{FEAR_3}}</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Objections, Decoded</h2>
+    <div class="card">
+      <div class="obj-row"><span class="o obj-head">What they say</span><span class="r obj-head r-head">What's really going on</span></div>
+      <!-- duplicate as needed -->
+      <div class="obj-row"><span class="o">“{{OBJECTION_1}}”</span><span class="r">{{OBJECTION_1_REAL}}</span></div>
+      <div class="obj-row"><span class="o">“{{OBJECTION_2}}”</span><span class="r">{{OBJECTION_2_REAL}}</span></div>
+      <div class="obj-row"><span class="o">“{{OBJECTION_3}}”</span><span class="r">{{OBJECTION_3_REAL}}</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Content Angles</h2>
+    <ol class="angles">
+      <!-- duplicate as needed -->
+      <li>{{ANGLE_1}}</li>
+      <li>{{ANGLE_2}}</li>
+      <li>{{ANGLE_3}}</li>
+    </ol>
+  </section>
+
+  <footer>
+    <span>Living document — say “update my viewer doc” to keep it alive.</span>
+    <span>Built with the Know Your Viewer kit · <a href="https://join.timetobuild.live">Time to Build</a></span>
+  </footer>
+
+</div>
+</body>
+</html>
