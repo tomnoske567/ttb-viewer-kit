@@ -11,7 +11,9 @@ When they say "update my viewer doc" → the skill's Update mode.
 ## Folder map
 
 ```
-.claude/skills/viewer-doc/SKILL.md   ← The guided process. Follow it exactly.
+.claude/skills/viewer-doc/SKILL.md   ← The guided process. Follow it exactly. CANONICAL.
+claude-ai-version.md                 ← Copy of the skill body for claude.ai users. If
+                                       SKILL.md changes, regenerate this file to match.
 templates/VIEWER-DOC-TEMPLATE.md     ← Document skeleton. Fill it, don't restructure it.
 templates/dashboard.html             ← Dashboard shell. Fill placeholders, don't redesign.
 examples/example-viewer-doc.md       ← A finished (fictional) example for reference.

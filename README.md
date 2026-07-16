@@ -14,23 +14,43 @@ No coding. No installs beyond Claude itself. You talk, it builds.
 
 ## How to use it
 
+Never used Claude Code or GitHub before? That's fine. Follow the steps exactly and you can't go wrong.
+
 ### Option 1 — Claude Code (best experience)
 
-1. Click the green **Code** button at the top of this page → **Download ZIP** → unzip it. (Or clone the repo if you know git.)
-2. Drop any data you have into the `my-data/` folder — transcripts, call recordings' transcripts, screenshots of DMs and comments, testimonials. Don't have any? Skip this. The interview covers you.
-3. Open the folder in [Claude Code](https://claude.com/claude-code) and say:
+**Step 1 — Get Claude Code** (skip if you already have it)
+Download it at [claude.com/claude-code](https://claude.com/claude-code) — grab the desktop app for Mac or Windows and sign in with your Claude account. The regular Pro plan is all you need.
 
-   **"build my viewer doc"**
+**Step 2 — Download this kit**
+Click the green **Code** button at the top of this page, then **Download ZIP**. Double-click the ZIP to unzip it. You now have a folder called `ttb-viewer-kit-main`. Move it somewhere you'll find it again, like your Desktop.
 
-4. Answer the questions. One at a time, like a conversation. At the end you'll have your document and your dashboard.
+**Step 3 — Add your data** (optional)
+Open the folder and drop anything with your audience's real words into `my-data` — transcripts, screenshots of DMs and comments, testimonials. Got nothing? Skip this step. Claude will double-check with you anyway.
 
-### Option 2 — claude.ai (no downloads)
+**Step 4 — Open the folder in Claude Code**
+Open Claude Code and open the `ttb-viewer-kit-main` folder (drag the folder onto the app, or use Open Folder). If it asks "Do you trust the files in this folder?" — say yes. That's a standard question it asks about any new folder.
 
-1. Download just one file from this repo: `.claude/skills/viewer-doc/SKILL.md`
-2. Go to [claude.ai](https://claude.ai), start a new chat, and attach that file along with any transcripts or screenshots you have.
-3. Say: **"Follow this skill and build my viewer doc."**
+**Step 5 — Say the magic words**
+Type:
+
+   **build my viewer doc**
+
+Then just answer the questions, one at a time, like a conversation. At the end you'll have your document and your dashboard.
+
+### Option 2 — claude.ai (no Claude Code needed)
+
+1. Download and unzip the kit (Step 2 above).
+2. Find the file called `claude-ai-version.md` in the folder.
+3. Go to [claude.ai](https://claude.ai), start a new chat, and attach that file along with any transcripts or screenshots you have.
+4. Say: **"Follow this skill and build my viewer doc."**
 
 You'll get the same document, delivered in the chat.
+
+## If something's not working
+
+- **Claude acts like it's never heard of the kit.** You probably opened the wrong folder. Make sure you opened `ttb-viewer-kit-main` itself — not your Downloads folder, and not the ZIP file.
+- **You can't see a `.claude` folder.** It's there — folders starting with a dot are invisible in Finder and File Explorer. Claude Code sees it fine. You never need to open it yourself.
+- **Stuck on anything else.** Ask Claude itself. Literally type "I'm stuck, help me get started with this kit" — it can read the folder and walk you through it.
 
 ## What data helps (all optional)
 
