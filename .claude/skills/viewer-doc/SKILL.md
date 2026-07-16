@@ -30,7 +30,12 @@ This determines the path: someone with customers and transcripts gets a data-hea
 
 ### Phase 2 — Ingest their data
 
-Ask what raw material they have. Prompt their memory with the list:
+**First, look inside `my-data/` before saying anything about data.**
+- If it has files in it (anything beyond the README), list what you found by name, confirm that's everything they meant to include, and ask if there's anything else to add before you start digging.
+- If it's empty, tell them directly — don't skip past it: "Heads up — your `my-data/` folder is empty. Before we start the interview, do you have anything with your audience's real words in it? YouTube transcripts, call recordings, screenshots of DMs or comments, testimonials, emails? Even one messy file makes your document noticeably better. Drop anything you have into `my-data/` and tell me when you're done — or if you genuinely have nothing, say so and the interview will carry it."
+- Only proceed to the interview once they've either added files or confirmed they have nothing.
+
+Whether the folder had files or not, jog their memory with this list — people always forget a source they actually have:
 - YouTube or podcast transcripts
 - Sales call or coaching call recordings/transcripts
 - Instagram/TikTok comments and DMs (screenshots are fine)
@@ -38,7 +43,7 @@ Ask what raw material they have. Prompt their memory with the list:
 - Emails from their list, survey responses
 - Community posts (Skool, Circle, Discord, Facebook groups)
 
-If this kit's folder is available, tell them to drop files into `my-data/` and read everything in there. In a chat without the folder, ask them to attach or paste the material.
+In a chat without the kit folder, do the same check conversationally: ask them to attach or paste whatever material they have before the interview starts.
 
 Mine every source for:
 - **Recurring problems** — the same complaint in different words
